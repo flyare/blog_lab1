@@ -6,7 +6,7 @@ route.get("/", function (req, res) {
 });
 
 route.get("/signup", function (req, res) {
-    res.render("signup");
+    res.render("signup", {data: {}});
 })
 
 module.exports = route;

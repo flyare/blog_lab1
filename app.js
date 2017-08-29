@@ -9,6 +9,7 @@ app.set("view engine", "ejs");
 
 app.use(controllers);
 
+app.use(bodyParser.json());
 // parse application/x-www-form-urlencoded 
 app.use(bodyParser.urlencoded({ extended: false }))
 
