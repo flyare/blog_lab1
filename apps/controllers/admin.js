@@ -5,4 +5,8 @@ route.get("/", function (req, res) {
     res.json("this is admin page");
 });
 
+route.get("/signup", function (req, res) {
+    res.render("signup");
+})
+
 module.exports = route;

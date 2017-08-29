@@ -12,8 +12,9 @@ app.use(controllers);
 // parse application/x-www-form-urlencoded 
 app.use(bodyParser.urlencoded({ extended: false }))
 
-
+//Static folder
+app.use("/", express.static(__dirname + "/public"));
 
 app.listen(3000, function () {
     console.log("Server run at port", config.get("server.port"));
-})
+});
