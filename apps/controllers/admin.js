@@ -1,7 +1,8 @@
 var express = require("express");
-var validate = require("../helper/validate")
+var validate = require("../helpers/validate")
 var route = express.Router();
 var user_md = require("../models/user");
+var helper = require("../helpers/helper")
 
 route.get("/", function (req, res) {
     res.json("this is admin page");
@@ -24,7 +25,7 @@ route.post("/signup", function (req, res) {
 
      var userDb = {
          email: user.email,
-         password: user.passwd,
+         password: helper.hashPassword(user.passwd),
          first_name: user.firstname,
          last_name: user.lastname
      };

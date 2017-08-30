@@ -9,5 +9,6 @@
         "user": "root",
         "password": "",
         "database": "blog_codeto"
-    }
+    },
+    "saltRound": 10
 }
