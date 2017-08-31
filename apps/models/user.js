@@ -16,8 +16,24 @@ function addUser(user) {
 
         return defer.promise;
     }
+};
+
+function getUserByEmail(user) {
+    if (user) {
+        defer = q.defer();
+        var query = conn.query('SELECT * FROM `users` WHERE ?', {email: user.email}, function (err, result) {
+            if (err) {
+                defer.reject(err);
+            } else {
+                defer.resolve(result);
+            }
+        });
+
+        return defer.promise;
+    }
 }
 
 module.exports = {
-    addUser: addUser
+    addUser: addUser,
+    getUserByEmail: getUserByEmail
 }

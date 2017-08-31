@@ -3,7 +3,16 @@ var express = require('express'),
     config = require("config"),
     bodyParser = require("body-parser"),
     port = config.get("server.port"),
+    session = require("express-session"),
     app = express();
+
+app.set('trust proxy', 1) // trust first proxy 
+app.use(session({
+    secret: config.get("secretkey"),
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true }
+}));
 
 app.set("views", __dirname + "/apps/views");
 app.set("view engine", "ejs");

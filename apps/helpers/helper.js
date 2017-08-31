@@ -9,6 +9,13 @@ function hashPassword(password) {
     return hash;
 }
 
+function comparePassword(password, hash) {
+    bcryptjs.compare(password, hash).then(function (res) {
+        return res;
+    })
+}
+
 module.exports = {
-    hashPassword: hashPassword
+    hashPassword: hashPassword,
+    comparePassword: comparePassword
 }

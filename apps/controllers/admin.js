@@ -27,16 +27,44 @@ route.post("/signup", function (req, res) {
          email: user.email,
          password: helper.hashPassword(user.passwd),
          first_name: user.firstname,
-         last_name: user.lastname
+         last_name: user.lastname,
+         created_at: Date.now().toString()
      };
+
+     console.log(userDb);
 
      var result = user_md.addUser(userDb);
 
      result.then(function(data){
-        res.json("Insert sussecc!");
+        res.redirect("/admin/signin");
      }).catch(function (err) {
         res.render("signup", {data: {error: true, message: err}});
      })     
+})
+
+route.get("/signin", function (req, res) {
+    res.render("signin", {data: {error: false, message: ""}});
+})
+
+route.post("/signin", function (req, res) {
+    var user = req.body;
+
+    if (!validate.checkEmail(user.email)) {
+        res.render("signin", {data: {error: true, message: "Email is inconrect!"}})
+    }
+
+    if (validate.checkRequire(user.password)) {
+        res.render("signin", {data: {error: true, message: "Password is require."}})
+    }
+
+    //check user db now.
+    
+    var result = user_md.getUserByEmail(user);
+    result.then(function(data){
+        res.redirect("/admin/signin");
+     }).catch(function (err) {
+        res.render("signin", {data: {error: true, message: err}});
+     })
 })
 
 module.exports = route;

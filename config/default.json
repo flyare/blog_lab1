@@ -10,5 +10,6 @@
         "password": "",
         "database": "blog_codeto"
     },
-    "saltRound": 10
+    "saltRound": 10,
+    "secretkey": "keyboard cat"
 }

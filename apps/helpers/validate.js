@@ -9,5 +9,12 @@ module.exports = {
         }
 
         return false;
+    },
+    checkRequire: function (params) {
+        if (params.trim().length === 0) {
+            return true;
+        }
+
+        return false;
     }
 }

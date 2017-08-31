@@ -24,19 +24,22 @@
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <div class="panel-title">Sign Up</div>
-                    <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="#" onclick="$('#signupbox').hide(); $('#loginbox').show()">Sign In</a></div>
+                    <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="/admin/signin" >Sign In</a></div>
                 </div>
                 <div class="panel-body">
                     <form id="signupform" class="form-horizontal" role="form" method="POST" action="/admin/signup">
 
-                        <div id="signupalert" style="<% if(!data.error) { %> display:none <% } %>" class="alert alert-danger">
-                            <p>Error:</p>
-                            <span><%= data.message %></span>
+                        <div id="signupalert" <% if (!data.error) { %> 
+                                                    style="display:none"
+                                                <% } %> 
+                                class="alert alert-danger">
+                            <p>Error:<%= data.message %></p>
+                            <span></span>
                         </div>
 
                         <div class="form-group">
                             <label for="email" class="col-md-3 control-label">Email</label>
-                            <div class="col-md-9">                                
+                            <div class="col-md-9">
                                 <input type="text" class="form-control" name="email" placeholder="Email Address">
                             </div>
                         </div>
