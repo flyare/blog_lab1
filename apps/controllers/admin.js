@@ -5,7 +5,7 @@ var user_md = require("../models/user");
 var helper = require("../helpers/helper")
 
 route.get("/", function (req, res) {
-    res.json("this is admin page");
+    res.render("admin/dashboard");
 });
 
 route.get("/signup", function (req, res) {
