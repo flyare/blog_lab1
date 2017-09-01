@@ -29,9 +29,7 @@ route.post("/signup", function (req, res) {
          first_name: user.firstname,
          last_name: user.lastname,
          created_at: Date.now().toString()
-     };
-
-     console.log(userDb);
+     };     
 
      var result = user_md.addUser(userDb);
 
@@ -70,9 +68,7 @@ route.post("/signin", function (req, res) {
             }    
         } else{
             res.render("signin", {data: {error: true, message: "Email incorrect."}});
-        }        
-
-        res.redirect("/admin/signin");
+        }                
      }).catch(function (err) {
         res.render("signin", {data: {error: true, message: err}});
      });
