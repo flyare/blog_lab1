@@ -61,10 +61,21 @@ route.post("/signin", function (req, res) {
     
     var result = user_md.getUserByEmail(user);
     result.then(function(data){
+        if (data.length > 0) {
+            if(helper.comparePassword(user.password, data[0].password)) {
+                req.session.user = data[0];                
+                res.redirect("/admin");
+            } else {
+                res.render("signin", {data: {error: true, message: "Password incorrect."}});
+            }    
+        } else{
+            res.render("signin", {data: {error: true, message: "Email incorrect."}});
+        }        
+
         res.redirect("/admin/signin");
      }).catch(function (err) {
         res.render("signin", {data: {error: true, message: err}});
-     })
+     });
 })
 
 module.exports = route;

@@ -21,7 +21,7 @@ function addUser(user) {
 function getUserByEmail(user) {
     if (user) {
         defer = q.defer();
-        var query = conn.query('SELECT * FROM `users` WHERE ?', {email: user.email}, function (err, result) {
+        var query = conn.query("SELECT * FROM users WHERE ?", {email: user.email}, function (err, result) {
             if (err) {
                 defer.reject(err);
             } else {

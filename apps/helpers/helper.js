@@ -10,9 +10,7 @@ function hashPassword(password) {
 }
 
 function comparePassword(password, hash) {
-    bcryptjs.compare(password, hash).then(function (res) {
-        return res;
-    })
+    return bcryptjs.compareSync(password, hash);
 }
 
 module.exports = {
